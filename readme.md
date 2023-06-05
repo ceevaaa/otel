@@ -32,3 +32,6 @@ Metrics Pipeline Configuration
     - [metricstransform](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricstransformprocessor)
 * Exporter:
     - [otlphttp](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter)
+
+## NOTES
+> There are other receivers also defined in the manifest file but they are not included in the service pipeline.
