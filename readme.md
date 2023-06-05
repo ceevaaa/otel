@@ -13,22 +13,22 @@ b. Auto-Instrumentation
 
 ## EKS
 Metrics Pipeline Configuration
-Receivers: 
+* Receivers: 
 - [k8s_cluster](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sclusterreceiver)
 - [kubeletstats](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/kubeletstatsreceiver)
-Processor:
+* Processor:
 - [batch](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/batchprocessor)
 - [metricstransform](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricstransformprocessor)
-Exporter:
+* Exporter:
 - [otlphttp](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter)
   
 
 ## RDS
 Metrics Pipeline Configuration
-Receivers: 
+* Receivers: 
 - [postgresql](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/postgresqlreceiver)
-Processor:
+* Processor:
 - [batch](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/batchprocessor)
 - [metricstransform](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricstransformprocessor)
-Exporter:
+* Exporter:
 - [otlphttp](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter)
