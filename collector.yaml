@@ -341,7 +341,7 @@ spec:
       logging:
         verbosity: detailed
       otlphttp:
-        endpoint: "http://3.144.6.90:4318"
+        endpoint: "http://3.22.41.247:4318"
         tls:
           insecure: true
 
