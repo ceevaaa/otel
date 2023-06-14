@@ -24,6 +24,8 @@ spec:
           load:
             cpu_average: true
       
+      # to do
+      # create otel user in DB and assign it correct set of permissions
       postgresql:
         endpoint: example.cwe5s3kpfmfv.us-east-2.rds.amazonaws.com:5432
         username: postgres
