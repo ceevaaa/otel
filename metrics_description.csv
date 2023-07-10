@@ -1,0 +1,70 @@
+metric,description
+system_cpu_time,Total CPU seconds broken down by different states.
+system_memory_usage,Bytes of memory in use.
+system_cpu_load_average_15m,Average CPU Load over 15 minutes.
+system_cpu_load_average_1m,Average CPU Load over 1 minute.
+system_cpu_load_average_5m,Average CPU Load over 5 minutes.
+"postgresql_bgwriter_buffers_allocated","Number of buffers allocated."
+"postgresql_bgwriter_buffers_writes","Number of buffers written."
+"postgresql_bgwriter_checkpoint_count","The number of checkpoints performed."
+"postgresql_bgwriter_duration","Total time spent writing and syncing files to disk by checkpoints."
+"postgresql_bgwriter_maxwritten","Number of times the background writer stopped a cleaning scan because it had written too many buffers."
+"postgresql_connection_max","Configured maximum number of client connections allowed"
+"postgresql_database_count","Number of user databases."
+"postgresql_wal_age","Age of the oldest WAL file."
+"postgresql_index_scans","The number of index scans on a table."
+"postgresql_index_size","The size of the index on disk."
+"postgresql_backends","The number of backends."
+"postgresql_commits","The number of commits."
+"postgresql_db_size","The database disk usage."
+"postgresql_rollbacks","The number of rollbacks."
+"postgresql_table_count","Number of user tables in a database."
+"postgresql_blocks_read","The number of blocks read."
+"postgresql_operations","The number of db row operations."
+"postgresql_rows","The number of rows in the database."
+"postgresql_table_size","Disk space used by a table."
+"postgresql_table_vacuum_count","Number of times a table has manually been vacuumed."
+k8s_namespace_phase,"The current phase of namespaces (1 for active and 0 for terminating)"
+k8s_node_cpu_time,Node CPU time
+k8s_node_cpu_utilization,Node CPU utilization
+k8s_node_filesystem_available,Node filesystem available
+k8s_node_filesystem_capacity,Node filesystem capacity
+k8s_node_filesystem_usage,Node filesystem usage
+k8s_node_memory_available,Node memory available
+k8s_node_memory_major_page_faults,Node memory major_page_faults
+k8s_node_memory_page_faults,Node memory page_faults
+k8s_node_memory_rss,Node memory rss
+k8s_node_memory_usage,Node memory usage
+k8s_pod_cpu_time,Pod CPU time
+k8s_pod_cpu_utilization,Pod CPU utilization
+k8s_pod_filesystem_available,Pod filesystem available
+k8s_pod_filesystem_capacity,Pod filesystem capacity
+k8s_pod_filesystem_usage,Pod filesystem usage
+k8s_pod_memory_major_page_faults,Pod memory major_page_faults
+k8s_pod_memory_page_faults,Pod memory page_faults
+k8s_pod_memory_rss,Pod memory rss
+k8s_pod_memory_usage,Pod memory usage
+k8s_pod_memory_working_set,Pod memory working_set
+k8s_pod_phase,"Current phase of the pod (1 - Pending, 2 - Running, 3 - Succeeded, 4 - Failed, 5 - Unknown)"
+container_cpu_time,Container CPU time
+container_cpu_utilization,Container CPU utilization
+container_filesystem_available,Container filesystem available
+container_filesystem_capacity,Container filesystem capacity
+container_filesystem_usage,Container filesystem usage
+container_memory_major_page_faults,Container memory major_page_faults
+container_memory_page_faults,Container memory page_faults
+container_memory_rss,Container memory rss
+container_memory_usage,Container memory usage
+container_memory_working_set,Container memory working_set
+k8s_container_restarts,"How many times the container has restarted in the recent past. This value is pulled directly from the K8s API and the value can go indefinitely high and be reset to 0 at any time depending on how your kubelet is configured to prune dead containers. It is best to not depend too much on the exact value but rather look at it as either == 0, in which case you can conclude there were no restarts in the recent past, or > 0, in which case you can conclude there were restarts in the recent past, and not try and analyze the value beyond that."
+k8s_container_ready,"Whether a container has passed its readiness probe (0 for no, 1 for yes)"
+k8s_container_memory_request,"Resource requested for the container. See https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcerequirements-v1-core for details"
+k8s_container_cpu_request,"Resource requested for the container. See https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcerequirements-v1-core for details"
+k8s_replicaset_desired,Number of desired pods in this replicaset
+k8s_replicaset_available,"Total number of available pods (ready for at least minReadySeconds) targeted by this replicaset"
+k8s_daemonset_current_scheduled_nodes,"Number of nodes that are running at least 1 daemon pod and are supposed to run the daemon pod"
+k8s_daemonset_desired_scheduled_nodes,"Number of nodes that should be running the daemon pod (including nodes currently running the daemon pod)"
+k8s_daemonset_misscheduled_nodes,"Number of nodes that are running the daemon pod, but are not supposed to run the daemon pod"
+k8s_daemonset_ready_nodes,"Number of nodes that should be running the daemon pod and have one or more of the daemon pod running and ready"
+k8s_deployment_available,"Total number of available pods (ready for at least minReadySeconds) targeted by this deployment"
+k8s_deployment_desired,"Number of desired pods in this deployment"

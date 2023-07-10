@@ -17,30 +17,31 @@ spec:
     receivers:
 
       hostmetrics:
-        collection_interval: 10s
+        collection_interval: 60s
         scrapers:
           cpu:
           memory:
           load:
             cpu_average: true
       
-      # to do
+      # TO DO
       # create otel user in DB and assign it correct set of permissions
       postgresql:
-        endpoint: example.cwe5s3kpfmfv.us-east-2.rds.amazonaws.com:5432
+        endpoint: example.crankqfjg3en.us-east-1.rds.amazonaws.com:5432
         username: postgres
-        password: example123
+        password: postgres
         databases:
           - postgres
+        collection_interval: 60s
 
       kubeletstats:
-        collection_interval: 10s
+        collection_interval: 60s
         auth_type: "serviceAccount"
         endpoint: "https://${env:K8S_NODE_NAME}:10250"
         insecure_skip_verify: true
 
       k8s_cluster:
-        collection_interval: 10s
+        collection_interval: 60s
         node_conditions_to_report: [Ready,MemoryPressure,DiskPressure,NetworkUnavailable]
         allocatable_types_to_report: [cpu,memory,storage]
 
@@ -321,7 +322,7 @@ spec:
                                                             
     processors:
       batch:
-        timeout: 60s
+        timeout: 30s
 
       metricstransform:
         transforms:
@@ -330,26 +331,46 @@ spec:
             action: update
             operations:
               - action: add_label
-                new_label: EKS_Cluster
-                new_value: Datadog-OTel-POV
+                new_label: k8s.cluster.name
+                new_value: otel-datadog-poc
               - action: update_label
                 label: kubernetes_pod_name
-                new_label: EKS_PodName
+                new_label: k8s.pod.name
               - action: update_label
                 label: kubernetes_namespace
-                new_label: EKS_Namespace               
+                new_label: k8s.namespace.name
+
+      transform:
+        metric_statements:
+        - context: datapoint
+          statements:
+            - convert_sum_to_gauge() where metric.type == 2
+
+      # attributes/example:
+      #   actions:
+      #       - key: card_information.number
+      #         value: REDACTED
+      #         action: update
+      #       - key: card_information.number
+      #         value: xxxxxxxx
+      #         action: update
+      #       - key: user.email
+      #         action: delete
+      #       - key: user.password
+      #         action: delete
 
     exporters:
       logging:
         verbosity: detailed
       otlphttp:
-        endpoint: "http://18.221.56.41:4318"
+        endpoint: "http://54.209.155.128:4318"
         tls:
           insecure: true
 
     service:
       pipelines:
         metrics:
-          receivers: [postgresql,k8s_cluster,kubeletstats]
-          processors: [batch,metricstransform]
+          receivers: [k8s_cluster,kubeletstats,postgresql,hostmetrics]
+          # receivers: [postgresql]
+          processors: [metricstransform,transform,batch]
           exporters: [otlphttp]         
